@@ -5,20 +5,29 @@ using UnityEngine;
 public class Computer : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private Vector2 startPos;
 
     public GameObject ball;
 
     private Vector2 ballPos;
 
+    private Rigidbody2D rb;
+
     void Start()
     {
-        
+        transform.position = startPos;
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Move();
+    }
+
+    public void Reset()
+    {
+        transform.position = startPos;
+        rb.velocity = Vector2.zero;
     }
 
     void Move()

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour {
     [SerializeField] public Rigidbody2D rb2d;
     [SerializeField] public float speed;
+    [SerializeField] private Vector2 startPos;
 
     private void Awake()
     {
@@ -13,13 +14,15 @@ public class Ball : MonoBehaviour {
 
     void Start()
     {
+        transform.position = startPos;
         SetRandomTrajectory();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Reset()
     {
-        
+        transform.position = startPos;
+        rb2d.velocity = Vector2.zero;
+        SetRandomTrajectory();
     }
 
     private void SetRandomTrajectory() 

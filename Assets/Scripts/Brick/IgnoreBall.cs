@@ -10,7 +10,6 @@ public class IgnoreBall : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ball Computer"))
         {
-            print("Pasale");
             brick.GetComponent<Collider2D>().isTrigger = true;
         }
 

@@ -144,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2140458254087930750, guid: 2c5d3c2aca5919d41b8d437eef08fbc2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.79
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 2140458254087930750, guid: 2c5d3c2aca5919d41b8d437eef08fbc2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -327,7 +327,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4cdbd28e10d9c64f9a9426095617074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 3.5
+  startPos: {x: 9.77, y: 0}
   ball: {fileID: 1867969871}
 --- !u!61 &300681712
 BoxCollider2D:
@@ -538,9 +539,9 @@ GameObject:
   - component: {fileID: 753254680}
   - component: {fileID: 753254679}
   - component: {fileID: 753254681}
-  - component: {fileID: 753254682}
+  - component: {fileID: 753254683}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: GoalPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -623,7 +624,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -639,7 +640,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &753254682
+--- !u!114 &753254683
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -648,9 +649,91 @@ MonoBehaviour:
   m_GameObject: {fileID: 753254677}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48af986eb80a61b41b3fd7f8e2ec8142, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c9720d13edd282409391b71fdc5f82b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerGoal: 1
+  gameManager: {fileID: 787901409}
+--- !u!1 &787901409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 787901411}
+  - component: {fileID: 787901410}
+  - component: {fileID: 787901412}
+  - component: {fileID: 787901413}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &787901410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787901409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bcdc8704f7e5e5418880ad04a01db53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ball: {fileID: 1867969871}
+  player: {fileID: 1320368956}
+  playerGoal: {fileID: 1629775754}
+  computer: {fileID: 300681710}
+  computerGoal: {fileID: 753254677}
+  playerText: {fileID: 1190276143}
+  computerText: {fileID: 2127124018}
+--- !u!4 &787901411
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787901409}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.08305535, y: -0.29495648, z: -9.986967}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &787901412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787901409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb28710bd47717a43bf99b59021e0c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countdownObstacle: 5
+--- !u!114 &787901413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787901409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf6dddda2411c34ea97b446e18f259f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolPrefab: {fileID: 2140458254087930722, guid: 2c5d3c2aca5919d41b8d437eef08fbc2, type: 3}
+  startingNumberofObjects: 1
 --- !u!1 &884330395
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,7 +824,7 @@ GameObject:
   - component: {fileID: 1190276144}
   - component: {fileID: 1190276143}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Player Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -975,6 +1058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
+  startPos: {x: -9.77, y: 0}
   maxBounceAngle: 40
 --- !u!212 &1320368959
 SpriteRenderer:
@@ -1248,8 +1332,9 @@ GameObject:
   - component: {fileID: 1629775757}
   - component: {fileID: 1629775756}
   - component: {fileID: 1629775758}
+  - component: {fileID: 1629775759}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: GoalComputer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1332,7 +1417,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1348,6 +1433,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1629775759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629775754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c9720d13edd282409391b71fdc5f82b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerGoal: 0
+  gameManager: {fileID: 787901409}
 --- !u!1 &1682503056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,7 +1564,7 @@ GameObject:
   - component: {fileID: 1867969872}
   m_Layer: 7
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1484,6 +1583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2d: {fileID: 1867969874}
   speed: 400
+  startPos: {x: 0, y: 0}
 --- !u!58 &1867969873
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1581,7 +1681,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867969871}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.62, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1692,7 +1792,7 @@ GameObject:
   - component: {fileID: 2127124019}
   - component: {fileID: 2127124018}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Computer Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

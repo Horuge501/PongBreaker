@@ -8,6 +8,7 @@ public class PongMovement : MonoBehaviour
     private PongController controller;
 
     [SerializeField] private float speed;
+    [SerializeField] private Vector2 startPos;
     public float maxBounceAngle;
 
     private Rigidbody2D rb;
@@ -19,13 +20,15 @@ public class PongMovement : MonoBehaviour
 
     void Start()
     {
+        transform.position = startPos;
         controller.Enable();
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    public void Reset()
     {
-        
+        transform.position = startPos;
+        rb.velocity = Vector2.zero;
     }
 
     private void FixedUpdate() 

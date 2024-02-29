@@ -1,18 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject ball;
+
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject playerGoal;
+
+    [SerializeField] private GameObject computer;
+    [SerializeField] private GameObject computerGoal;
+
+    [SerializeField] private TextMeshProUGUI playerText;
+    [SerializeField] private TextMeshProUGUI computerText;
+
+    private int playerScore;
+    private int computerScore;
+
+    public void PlayerScore()
     {
-        
+        playerScore++;
+        playerText.text = playerScore.ToString();
+        ResetPosition();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ComputerScore()
     {
-        
+        computerScore++;
+        computerText.text = computerScore.ToString();
+        ResetPosition();
+    }
+
+    private void ResetPosition()
+    {
+        ball.GetComponent<Ball>().Reset();
+        player.GetComponent<PongMovement>().Reset();
+        computer.GetComponent<Computer>().Reset();
     }
 }
