@@ -8,11 +8,7 @@ public class Brick : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ball Player")) 
         {
-
-        }
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("Ball Computer")) 
-        {
-
+            Destroy(gameObject);
         }
     }
 }

@@ -58,5 +58,7 @@ public class PongMovement : MonoBehaviour
             Quaternion rotation = Quaternion.AngleAxis(newAngle, Vector3.forward);
             ball.rb2d.velocity = rotation * Vector2.right * ball.rb2d.velocity.magnitude;
         }
+
+        collision.gameObject.layer = LayerMask.NameToLayer("Ball Player");
     }
 }
